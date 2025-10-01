@@ -83,21 +83,21 @@ You work from home, run appliances throughout the day, cook dinner around 6 PM, 
 ### Example 3: Solar + EV
 Your solar covers most daytime usage, you charge your EV overnight, and you export power during peak hours. Your on-peak grid usage is probably 5-10%. **TOU likely saves you money on both usage and production credits.**
 
-## The Math Behind It
+## Calculating point of indifference
 
 The break-even formula is:
 
-x = (Flat Rate - Off-Peak Rate) / (On-Peak Rate - Off-Peak Rate)
+`x = (Flat Rate - Off-Peak Rate) / (On-Peak Rate - Off-Peak Rate)`
 
 
 Where `x` = the proportion of your usage during on-peak hours
 
 **Non-summer:**
-x = (0.08570 - 0.06792) / (0.18331 - 0.06792) = 15.4%
+`x = (0.08570 - 0.06792) / (0.18331 - 0.06792) = 15.4%`
 
 
 **Summer:**
-x = (0.1038 - 0.07884) / (0.21277 - 0.07884) = 18.6%
+`x = (0.1038 - 0.07884) / (0.21277 - 0.07884) = 18.6%`
 
 
 This is called an "indifference point" - the point where you'd be indifferent between the two pricing options because they cost exactly the same.
