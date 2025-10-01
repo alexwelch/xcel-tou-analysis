@@ -1,22 +1,34 @@
 # Xcel Energy TOU vs Flat Rate Calculator
 
-A spreadsheet tool to help Xcel Energy customers in Colorado determine whether Time-of-Use (TOU) pricing or flat rate pricing makes more financial sense for their household.
+I'm an Xcel customer in Denver with solar and an EV, and I was trying to figure out if the new TOU pricing changes make sense for my household. I built this spreadsheet to help, and I'm sharing it here in case it helps other folks in the same boat.
 
-## Background
+## ⚠️ Important Disclaimer
 
-In 2025, Xcel Energy changed their TOU peak hours to 5-9 PM on weekdays (previously 3-7 PM). This calculator helps you understand the break-even point and estimate your annual costs under each pricing structure.
+**This spreadsheet could have errors. There are no warranties or guarantees.**
 
-**Key Finding: The break-even point is 15.4% on-peak usage** (18.6% during summer months June-September).
+I built this for my own use and I'm sharing it as-is. You are 100% responsible for:
+- Verifying all rates and formulas are correct
+- Confirming the data matches your specific situation
+- Double-checking any calculations before making decisions
+- Consulting Xcel's official rate schedules
 
-- If **more than 15.4%** of your usage is during peak hours → **Flat rate is better**
-- If **less than 15.4%** is during peak hours → **TOU is better**
+**Use this at your own risk.** That being said, I would appreciate hearing about any [issues here](https://github.com/alexwelch/xcel-tou-analysis/issues)
 
-## Who Should Use This?
+## What This Does
 
-- Xcel Energy residential customers in Colorado
-- Households with solar panels (includes production credit analysis)
-- EV owners trying to optimize charging costs
-- Anyone considering opting out of TOU pricing
+This calculator helps you figure out whether Xcel's Time-of-Use (TOU) pricing or flat rate pricing will cost you less money. It also includes a section for solar owners to calculate production credits. 
+
+**The key finding:** The break-even point is around **15.4% on-peak usage** (18.6% in summer). 
+
+- If more than 15.4% of your electricity usage happens during peak hours (5-9 PM weekdays) → flat rate is probably better
+- If less than 15.4% is during peak hours → TOU is probably better
+
+## Who Might Find This Useful
+
+- Xcel customers in Colorado trying to decide between TOU and flat rate
+- Solar owners who want to calculate production credits under each plan
+- EV owners optimizing charging schedules
+- Anyone who's confused by the rate changes and wants to see the actual numbers
 
 ## Current Rates (as of October 1, 2025)
 
@@ -27,121 +39,109 @@ In 2025, Xcel Energy changed their TOU peak hours to 5-9 PM on weekdays (previou
 **Flat Rate:**
 - All hours: $0.08570/kWh (non-summer), $0.1038/kWh (summer)
 
-*Summer months: June, July, August, September*
+*Summer = June, July, August, September*
 
-## How to Use
+**Please verify these rates against your own Xcel bill.** Rates can change and may vary by location.
 
-### 1. Download the Spreadsheet
-Download `TOU_analysis.xlsx` from the [latest release](link-to-your-release).
+## How to Use This
 
-### 2. Input Your Data
+### Step 1: Download the Spreadsheet
+Grab `TOU_analysis.xlsx` from the [latest release](link-to-your-release).
 
-**For Usage Cost Analysis (rows 13-15):**
-- **On-Peak Usage %**: Estimate what percentage of your monthly electricity usage happens between 5-9 PM on weekdays
-- **Total Energy Consumed (kWh)**: Enter your total monthly consumption from your Xcel bill
+### Step 2: Input Your Data
 
-**For Solar Owners (rows 29-31):**
-- **On-Peak Production %**: Estimate what percentage of your solar production happens during peak hours (5-9 PM)
-- **Total Energy Produced (kWh)**: Enter your monthly solar production
+**Usage Cost Analysis (rows 13-15):**
+- **On-Peak Usage %**: Your best guess at what percentage of your monthly electricity gets used between 5-9 PM on weekdays. You might be able to glean some of it from your bill or energy monitoring tools if you have them (my solar monitoring system shows me hour by hour consumption).
+- **Total Energy Consumed (kWh)**: Get this from your Xcel bill - it's your total monthly usage. 
 
-### 3. Interpret Results
+**Solar Production Credits (rows 29-31) - skip if you don't have solar:**
+- **On-Peak Production %**: Estimate what percentage of your solar production happens during 5-9 PM. Your solar monitoring system probably has this information. For most people this is pretty low since the sun is setting. This is on of the big concerns with the new TOU hours.
+- **Total Energy Produced (kWh)**: Your monthly solar production from your monitoring system.
+
+### Step 3: Look at the Results
 
 **Usage Cost Comparison (rows 22-24):**
-- **Positive difference** = Flat rate saves you money
-- **Negative difference** = TOU saves you money
+- If the difference is **positive** → flat rate saves you money
+- If the difference is **negative** → TOU saves you money
 
 **Production Credits (rows 36-38, solar only):**
-- **Negative difference** = TOU earns you more credits
-- **Positive difference** = Flat rate earns you more credits
+- If the difference is **negative** → TOU gets you more credits
+- If the difference is **positive** → flat rate gets you more credits
 
 **Indifference Point (rows 45-46):**
-- Shows the exact on-peak percentage where both pricing structures are equal
-- Compare your actual usage pattern to this threshold
+- This shows the exact on-peak percentage where both plans cost the same
+- Compare your actual usage to this number to see which side you're on
 
-## Example Scenarios
+## Real-World Examples
 
-### Scenario 1: EV Owner, No Solar
-- Charges EV overnight (off-peak)
-- Typical daytime usage
-- **Estimated on-peak usage: 10-15%**
-- **Recommendation: Stay on TOU** ✅
+### Example 1: EV Owner, No Solar
+You charge your EV overnight and have pretty typical daytime usage. You might use less than 15% of your power on-peak. **TOU likely saves you money.**
 
-### Scenario 2: Home All Day, High Evening Usage
-- Work from home, run appliances throughout day
-- Cook dinner, laundry in evening
-- **Estimated on-peak usage: 25-30%**
-- **Recommendation: Switch to Flat Rate** ✅
+### Example 2: Home All Day
+You work from home, run appliances throughout the day, cook dinner around 6 PM, do laundry in the evening. Your on-peak usage might be 25-30%. **Flat rate would be better.**
 
-### Scenario 3: Solar + EV
-- Solar covers most daytime usage
-- EV charges overnight
-- Exports during peak hours
-- **Estimated on-peak usage: 5-10%**
-- **Recommendation: Stay on TOU** ✅ (benefits from both low usage costs and high export credits)
+### Example 3: Solar + EV
+Your solar covers most daytime usage, you charge your EV overnight, and you export power during peak hours. Your on-peak grid usage is probably 5-10%. **TOU likely saves you money on both usage and production credits.**
 
-## The Math
+## The Math Behind It
 
-The indifference point formula:
+The break-even formula is:
 
 x = (Flat Rate - Off-Peak Rate) / (On-Peak Rate - Off-Peak Rate)
 
 
-Where `x` = proportion of usage during on-peak hours
+Where `x` = the proportion of your usage during on-peak hours
 
-**Non-summer calculation:**
-x = (0.08570 - 0.06792) / (0.18331 - 0.06792)
-x = 0.01778 / 0.11539
-x = 0.154 (15.4%)
+**Non-summer:**
+x = (0.08570 - 0.06792) / (0.18331 - 0.06792) = 15.4%
 
 
-**Summer calculation:**
-x = (0.1038 - 0.07884) / (0.21277 - 0.07884)
-x = 0.02496 / 0.13393
-x = 0.186 (18.6%)
+**Summer:**
+x = (0.1038 - 0.07884) / (0.21277 - 0.07884) = 18.6%
 
 
-## Tips for Reducing On-Peak Usage
+This is called an "indifference point" - the point where you'd be indifferent between the two pricing options because they cost exactly the same.
 
-If you're close to the break-even point, here are ways to reduce on-peak usage:
+## Tips for Shifting Usage Off-Peak
 
-- **EV charging**: Set timer to start after 9 PM
-- **Dishwasher/laundry**: Run after 9 PM or before 5 PM
+If you're close to the break-even point, here are some ways to reduce on-peak usage:
+
+- **EV charging**: Set your charger to start after 9 PM
+- **Dishwasher/laundry**: Run them after 9 PM or on weekends
 - **Pool pumps**: Schedule for off-peak hours
-- **Smart thermostats**: Pre-cool before 5 PM in summer
-- **Cooking**: Use slow cookers, instant pots during off-peak
+- **Thermostats**: Pre-cool your house before 5 PM in summer
+- **Meal prep**: Use slow cookers or instant pots that you can set during off-peak times
 
-## Data Sources
+## Where I Got the Data
 
 - [Xcel Energy TOU Rate Schedule](https://co.my.xcelenergy.com/s/billing-payment/residential-rates/time-of-use-pricing)
-- [Colorado Public Radio: Xcel TOU Changes](https://www.cpr.org/2025/02/21/xcel-is-changing-when-it-charges-more-for-peak-time-energy-use/)
-- Rates effective October 1, 2025
+- [Colorado Public Radio article on the TOU changes](https://www.cpr.org/2025/02/21/xcel-is-changing-when-it-charges-more-for-peak-time-energy-use/)
+- My own Xcel bills
 
-## Contributing
+**Again: Please verify these rates yourself.** I could have made mistakes copying them over.
 
-Found an error? Have suggestions? 
+## Want to Help?
 
-- Open an [Issue](link-to-issues)
-- Submit a pull request
-- Share your results and feedback
+If you find errors, have suggestions, or want to share your results:
+- Open an [Issue](https://github.com/alexwelch/xcel-tou-analysis/issues)
+- Submit a pull request or reach out to me using this issues form if you want to improve the spreadsheet.
+- Share your feedback - I'd love to know if this was helpful or if something's confusing
 
-## Disclaimer
+## More Disclaimers (Because They're Important)
 
-This calculator is for educational purposes only. Actual costs may vary based on:
-- Additional fees and charges on your Xcel bill
-- Seasonal rate changes
-- Your specific rate plan
-- Transmission and distribution charges
-
-Always verify with your actual Xcel Energy bill and consult their official rate schedules.
+- This is for educational purposes only
+- Your actual costs will vary based on fees, charges, and your specific rate plan
+- I'm not affiliated with Xcel Energy
+- Rates can change - always check Xcel's official schedules
+- This doesn't account for transmission charges, distribution charges, or other fees on your bill
+- Seriously, double-check everything before making any decisions. I read that once you change away from TOU, you can't change back for a year.
 
 ## License
 
-This project is released under the MIT License. Feel free to use, modify, and share.
+MIT License - use it, modify it, share it. No restrictions.
 
-## About
+## About This Project
 
-Created by an Xcel customer trying to optimize their solar + EV setup. Shared freely to help the Colorado community make informed decisions about TOU pricing.
+I built this because I was trying to optimize my own bill and couldn't find a simple calculator anywhere. Figured if I needed it, other folks probably do too. 
 
----
-
-**Questions?** Open an issue or discuss in the [r/Denver](https://reddit.com/r/denver) community.
+If this helps you save some money or just understand your bill better, that's awesome. If you find mistakes, please let me know so I can fix them.
