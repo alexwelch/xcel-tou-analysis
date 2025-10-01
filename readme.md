@@ -1,6 +1,6 @@
 # Xcel Energy TOU vs Flat Rate Calculator
 
-I'm an Xcel customer in Denver with solar and an EV, and I was trying to figure out if the new TOU pricing changes make sense for my household. I built this spreadsheet to help, and I'm sharing it here in case it helps other folks in the same boat.
+I'm an Xcel customer in Denver with solar and an EV, and I was trying to figure out if the new TOU (Time of Use) pricing changes make sense for my household. I built this spreadsheet to help, and I'm sharing it here in case it helps other folks in the same boat.
 
 ## ⚠️ Important Disclaimer
 
