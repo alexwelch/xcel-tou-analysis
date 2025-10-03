@@ -30,7 +30,7 @@ This calculator helps you figure out whether Xcel's Time-of-Use (TOU) pricing or
 - EV owners optimizing charging schedules
 - Anyone who's confused by the rate changes and wants to see the actual numbers
 
-## Current Rates (as of October 1, 2025)
+## New Rates
 
 **TOU Pricing:**
 - On-peak (5-9 PM weekdays): $0.18331/kWh (non-summer), $0.21277/kWh (summer)
